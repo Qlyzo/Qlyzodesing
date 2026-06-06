@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qlyzo Design — Affordable Design Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --accent: #e8ff47;
+    --accent2: #ff6b35;
+    --text: #f0f0f0;
+    --muted: #888;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,255,71,0.08) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .nav-badge {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-badge span {
+    color: #4ade80;
+    margin-right: 0.4rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 0 2rem;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  h1 .accent { color: var(--accent); }
+  h1 .outline {
+    -webkit-text-stroke: 1px var(--text);
+    color: transparent;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: transform 0.15s, opacity 0.15s;
+    display: inline-block;
+  }
+
+  .btn-telegram {
+    background: #229ED9;
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: transform 0.15s, opacity 0.15s;
+    display: inline-block;
+  }
+
+  .btn-telegram:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    padding: 0.9rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: border-color 0.15s, color 0.15s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat { }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--accent);
+    overflow: hidden;
+    padding: 0.8rem 0;
+  }
+
+  .marquee-inner {
+    display: flex;
+    gap: 2rem;
+    animation: marquee 18s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: #000;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .marquee-item::after {
+    content: '✦';
+    color: rgba(0,0,0,0.4);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SERVICES */
+  section { padding: 5rem 2rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: #1e1e1e; }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(232,255,71,0.1);
+    border: 1px solid rgba(232,255,71,0.25);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* PRICING */
+  .pricing-section { background: var(--surface); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+  }
+
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pricing-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .pricing-card.featured {
+    border-color: var(--accent);
+    background: rgba(232,255,71,0.03);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 1.5rem;
+    background: var(--accent);
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .pricing-tier {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .pricing-price sup { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; }
+  .pricing-from { font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pricing-features li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .pricing-features li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* WHY ME */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .why-item { }
+  .why-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .why-title {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .why-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--accent);
+    color: #000;
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .contact-section .section-label { color: rgba(0,0,0,0.5); }
+
+  .contact-section .section-title { color: #000; }
+
+  .contact-section p {
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-size: 1rem;
+    opacity: 0.7;
+    line-height: 1.7;
+  }
+
+  .contact-section .btn-primary {
+    background: #000;
+    color: var(--accent);
+  }
+
+  .contact-section .btn-telegram {
+    background: #000;
+    color: #229ED9;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-note { font-size: 0.75rem; color: var(--muted); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .eyebrow { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.3s; }
+  .cta-group { animation-delay: 0.4s; }
+  .hero-stats { animation-delay: 0.5s; }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <nav>
+    <div class="logo">Qlyzo Design</div>
+    <div class="nav-badge"><span>●</span> Open for orders</div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="eyebrow">Freelance Design Services</div>
+    <h1>
+      DESIGN<br>
+      THAT <span class="accent">HITS</span><br>
+      <span class="outline">DIFFERENT</span>
+    </h1>
+    <p class="hero-desc">
+      Quality design work at prices that actually make sense.
+      Fast turnaround, clean results — from $5. No fluff, just good work.
+    </p>
+    <div class="cta-group">
+      <a href="https://www.reddit.com/u/Wh1sPEr2e/s/RcF4nMbtju" class="btn-primary" target="_blank">DM on Reddit</a>
+      <a href="https://t.me/Qlyzo" class="btn-telegram" target="_blank">✈ Telegram</a>
+      <a href="#services" class="btn-ghost">See Services ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">$5</div>
+      <div class="stat-label">Starting price</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24H</div>
+      <div class="stat-label">Avg. delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Revisions on request</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Satisfaction goal</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <div class="marquee-item">Logo Design</div>
+    <div class="marquee-item">Banners & Ads</div>
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Thumbnails</div>
+    <div class="marquee-item">Branding</div>
+    <div class="marquee-item">Icons & Assets</div>
+    <div class="marquee-item">Posters</div>
+    <div class="marquee-item">UI Elements</div>
+    <div class="marquee-item">Logo Design</div>
+    <div class="marquee-item">Banners & Ads</div>
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Thumbnails</div>
+    <div class="marquee-item">Branding</div>
+    <div class="marquee-item">Icons & Assets</div>
+    <div class="marquee-item">Posters</div>
+    <div class="marquee-item">UI Elements</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I do</div>
+  <div class="section-title">SERVICES</div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🎨</span>
+      <div class="service-name">Logo Design</div>
+      <p class="service-desc">Clean, memorable logos for brands, channels, or personal projects. Multiple concepts, unlimited revisions.</p>
+      <span class="service-price">from $10</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <div class="service-name">Social Media Graphics</div>
+      <p class="service-desc">Posts, stories, profile pictures, banners — sized right for every platform. Fast & consistent style.</p>
+      <span class="service-price">from $5</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🖼️</span>
+      <div class="service-name">Thumbnails</div>
+      <p class="service-desc">YouTube or any platform thumbnails that actually get clicked. Bold, clear, and eye-catching.</p>
+      <span class="service-price">from $5</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📢</span>
+      <div class="service-name">Banners & Ads</div>
+      <p class="service-desc">Web banners, Reddit header art, Discord banners, promotional graphics — whatever you need.</p>
+      <span class="service-price">from $8</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏷️</span>
+      <div class="service-name">Brand Identity</div>
+      <p class="service-desc">Logo + color palette + basic brand kit. Everything to look consistent across platforms.</p>
+      <span class="service-price">from $20</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎭</span>
+      <div class="service-name">Custom / Other</div>
+      <p class="service-desc">Got something specific in mind? DM me and we'll figure out the scope and price together.</p>
+      <span class="service-price">let's talk</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-label">Transparent pricing</div>
+  <div class="section-title">HOW MUCH?</div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Simple</div>
+      <div class="pricing-price"><sup>$</sup>5</div>
+      <div class="pricing-from">one-time</div>
+      <ul class="pricing-features">
+        <li>Single graphic asset</li>
+        <li>1 concept</li>
+        <li>Basic edits included</li>
+        <li>Delivered in 24h</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most popular</div>
+      <div class="pricing-tier">Standard</div>
+      <div class="pricing-price"><sup>$</sup>10</div>
+      <div class="pricing-from">starting from</div>
+      <ul class="pricing-features">
+        <li>Logo or multi-asset pack</li>
+        <li>2–3 concepts to choose from</li>
+        <li>Revisions until happy</li>
+        <li>Delivered in 24–48h</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tier">Complex</div>
+      <div class="pricing-price"><sup>$</sup>20<span style="font-size:1.5rem">+</span></div>
+      <div class="pricing-from">depends on scope</div>
+      <ul class="pricing-features">
+        <li>Full brand kit</li>
+        <li>Multi-page / multi-asset work</li>
+        <li>Detailed custom projects</li>
+        <li>Priority delivery</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="section-label">Why choose me</div>
+  <div class="section-title">REAL TALK</div>
+
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-title">Honest prices</div>
+      <p class="why-desc">No hidden fees. You know what you pay upfront. Cheap doesn't mean bad.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-title">Fast delivery</div>
+      <p class="why-desc">Most orders done within 24 hours. Need it sooner? Just ask.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-title">Easy to talk to</div>
+      <p class="why-desc">No corporate nonsense. Direct communication, quick replies, easy revisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-label">Ready to order?</div>
+  <div class="section-title">LET'S WORK</div>
+  <p>Slide into my DMs on Reddit with your idea, reference images, or just a vague concept. I'll figure out the rest.</p>
+  <div class="cta-group" style="justify-content:center;">
+    <a href="https://www.reddit.com/u/Wh1sPEr2e/s/RcF4nMbtju" class="btn-primary" target="_blank">DM on Reddit →</a>
+    <a href="https://t.me/Qlyzo" class="btn-telegram" target="_blank">✈ Telegram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Qlyzo Design</div>
+  <div class="footer-note">© 2026 Qlyzo Design · Fast. Affordable. Good.</div>
+</footer>
+
+</body>
+</html>
