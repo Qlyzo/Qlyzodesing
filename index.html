@@ -412,6 +412,34 @@
     flex-shrink: 0;
   }
 
+  /* VIDEO PORTFOLIO */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+  .video-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .video-item video {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    background: #000;
+  }
+  .video-label {
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+  }
+
   /* WHY ME */
   .why-grid {
     display: grid;
@@ -727,7 +755,26 @@
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- VIDEO PORTFOLIO -->
+<section id="video-portfolio" style="background: var(--surface);">
+  <div class="section-label">With client permission</div>
+  <div class="section-title">VIDEO WORKS</div>
+  <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2.5rem; max-width: 500px; line-height: 1.7;">These clients gave permission to showcase their projects. Most work stays private — this is a rare exception.</p>
+  <div class="video-grid">
+    <div class="video-item">
+      <video controls preload="none" poster="">
+        <source src="V1.mp4" type="video/mp4">
+      </video>
+      <div class="video-label">Client Work #1</div>
+    </div>
+    <div class="video-item">
+      <video controls preload="none" poster="">
+        <source src="V2.mp4" type="video/mp4">
+      </video>
+      <div class="video-label">Client Work #2</div>
+    </div>
+  </div>
+</section>
 <section class="pricing-section" id="pricing">
   <div class="section-label">Transparent pricing</div>
   <div class="section-title">HOW MUCH?</div>
